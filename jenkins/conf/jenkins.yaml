@@ -82,3 +82,5 @@ tool:
 jobs:
   - file: /var/jenkins_config/jobs/folders.groovy
   - file: /var/jenkins_config/jobs/jar.groovy
+  - file: /var/jenkins_config/jobs/terraform.groovy
+  - file: /var/jenkins_config/jobs/terraform-destroy.groovy

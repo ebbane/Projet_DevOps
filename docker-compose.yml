@@ -14,7 +14,7 @@ services:
       - 50000:50000
     volumes:
       - jenkins_home:/var/jenkins_home
-      - ./conf:/var/jenkins_config/
+      - ./jenkins/conf:/var/jenkins_config/
     environment:
       - CASC_JENKINS_CONFIG=/var/jenkins_config/jenkins.yaml
       - JENKINS_ADMIN_ID=admin
