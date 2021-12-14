@@ -8,9 +8,17 @@ pipeline {
 
     stages {
 
+        stage('Set ssh key in cloud-init') {
+            steps {
+                script {
+                    sh "sed -i 's/SSH_KEY/${params.PUBLIC_SSH}/g' ${params.TERRAFORM_PATH}/scripts/add-ssh-web-app.yaml"
+                }
+            }
+        }
+
         stage('Terraform init') {
             steps {
-                dir('/usr/share/terraform/instances/'){
+                dir("/usr/share/terraform/instances/"){
                     sh 'terraform init'
                 }
 
@@ -19,7 +27,7 @@ pipeline {
 
         stage('Terraform apply') {
             steps {
-                dir('/usr/share/terraform/instances/'){
+                dir("${params.TERRAFORM_PATH}/instances/"){
 
                     sh 'terraform apply --auto-approve'
 
@@ -27,18 +35,6 @@ pipeline {
             }
         }
 
-        stage('Terraform destroy') {
-            when {
-                expression { params.SKIP_DESTROY == false }
-            }
-            steps {
-                dir('/usr/share/terraform/instances/'){
-
-                    sh 'terraform destroy --auto-approve'
-
-                }
-            }
-        }
 
     }
 }

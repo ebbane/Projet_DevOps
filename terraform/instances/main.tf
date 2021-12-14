@@ -24,7 +24,7 @@ resource "aws_instance" "app_server" {
   instance_type = "t2.micro"
   associate_public_ip_address = true
   user_data                   = data.template_file.user_data.rendered
-  key_name = "ssh_DIET"
+  key_name = "ssh_EDIET"
   vpc_security_group_ids = [aws_security_group.allow_ssh.id]
 
   tags = {
@@ -35,12 +35,12 @@ resource "aws_instance" "app_server" {
 }
 
 resource "aws_key_pair" "deployer"{
-  key_name = "ssh_DIET"
-  public_key =  file ("../ssh/id_rsa.pub")
+  key_name = "ssh_EDIET"
+  public_key =  file ("~/.ssh/id_rsa.pub")
 }
 
 resource "aws_security_group" "allow_ssh" {
-  name        = "allow_ssh_DIET"
+  name        = "allow_ssh_EDIET"
   description = "Allow TLS inbound traffic"
 
   ingress {
