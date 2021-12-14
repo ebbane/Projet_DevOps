@@ -1,0 +1,17 @@
+plugin: amazon.aws.aws_ec2
+cache: yes
+cache_plugin: ansible.builtin.jsonfile
+cache_timeout: 7200
+cache_connection: /tmp/aws_inventory
+cache_prefix: aws_ec2
+regions:
+  - us-east-2
+aws_access_key_id:
+  - AKIA5HPHYM2IHU57ZD7Q
+aws_secret_access_key:
+  - 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
+filters:
+  instance-state-name: running
+include_filters:
+  tags:Owner:
+    - 'DIET-Ebbane'

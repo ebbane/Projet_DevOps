@@ -14,10 +14,20 @@ users:
     shell: /bin/bash
     primary_group: hashicorp
     sudo: ALL=(ALL) NOPASSWD:ALL
-#    groups: users, admin
+    groups: users, admin
     lock_passwd: false
     ssh_authorized_keys:
-      - ../ssh/id_rsa.pub
+      - SSH_KEY
+
+  - name: monitor
+    gecos: terraform
+    shell: /bin/bash
+    primary_group: hashicorp
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: admin
+    lock_passwd: false
+    ssh_authorized_keys:
+      - SSH_KEY
 
 # Downloads the python package
 packages:
