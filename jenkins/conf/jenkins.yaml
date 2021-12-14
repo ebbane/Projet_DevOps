@@ -84,3 +84,5 @@ jobs:
   - file: /var/jenkins_config/jobs/jar.groovy
   - file: /var/jenkins_config/jobs/terraform.groovy
   - file: /var/jenkins_config/jobs/terraform-destroy.groovy
+  - file: /var/jenkins_config/jobs/ansible.groovy
+  - file: /var/jenkins_config/jobs/ssh.groovy

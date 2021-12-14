@@ -50,8 +50,28 @@ RUN mv terraform /usr/local/bin/
 # Check that it's installed
 RUN terraform --version
 
+# COPY terraform directory
 ADD terraform/ /usr/share/terraform
 
+# ADD access to the directory
 RUN chown -R jenkins /usr/share/terraform
+
+
+################################
+# Install Ansible
+################################
+
+RUN \
+# Update
+apt-get update -y && \
+# Install Ansible
+apt-get install ansible -y
+
+
+# COPY ansible directory
+ADD ansible/ /usr/share/ansible
+
+# ADD access to the directory
+RUN chown -R jenkins  /usr/share/ansible
 
 USER jenkins
