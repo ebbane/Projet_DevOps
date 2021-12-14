@@ -1,0 +1,30 @@
+---
+# tasks file for java
+- name: Install openjdk 11
+  yum: name=java-11-openjdk-devel state=latest
+
+- name: Create user
+  user:
+    name: '{{ USER_NAME }}'
+    state: present
+    append: yes
+    group: admin
+    password: "{{ 'password' | password_hash('sha512') }}"
+
+- name: Create a jar directory
+  file:
+    path: '{{ JAR_PATH }}'
+    state: directory
+    owner: '{{ USER_NAME }}'
+
+- name: Download Jar using get_url
+  get_url:
+    url: https://github.com/Ozz007/sb3t/releases/download/1.0/sb3t-ws-1.0.jar
+    dest: '{{ JAR_PATH }}'
+
+- name: Run Jar
+  shell: 'java -jar {{ JAR_PATH }}/{{ JAR_NAME }} -Xmx{{ JVM_SIZE }}'
+  become_user : '{{ USER_NAME }}'
+  async: 100
+
+
