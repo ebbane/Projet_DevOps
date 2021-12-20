@@ -1,0 +1,12 @@
+- hosts: AWS_HOST
+  become: yes
+
+  tasks :
+    - name: Check that a page returns a status 200 and fail if the word UP is not in the page contents
+      uri:
+       url: 'http://AWS_IP:8080/api/actuator/health'
+       return_content: yes
+      register: this
+      failed_when: "'UP' not in this.content"
+      delay: 600
+      async : 100
