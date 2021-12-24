@@ -245,4 +245,6 @@ Documentations et références utiles à la réalisation de ce projet
 <div align="center">
         <img src="https://i.morioh.com/210621/2fef50c8.webp"/>
 </div>
-<p align="center"><i>Release 1.0.0 | 15/12/2021</i></p>
+
+<p align="center"><i>Release 1.1.0 | 20/12/2021</i></p>
+
