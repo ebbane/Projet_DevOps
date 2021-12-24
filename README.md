@@ -247,4 +247,3 @@ Documentations et références utiles à la réalisation de ce projet
 </div>
 
 <p align="center"><i>Release 1.1.0 | 20/12/2021</i></p>
-
